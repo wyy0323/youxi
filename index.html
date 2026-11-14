@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杨的游戏</title>
+<style>
+  :root {
+    --card-radius: 18px;
+    --gap: clamp(14px, 1.6vw, 26px);
+    --max-width: 1360px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, rgba(7, 11, 22, 0.35) 0%, rgba(7, 11, 22, 0.55) 100%),
+      url("assets/background.jpg") center / cover no-repeat fixed,
+      #070b16;
+    color: #eef2f9;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+      "Microsoft YaHei", "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(32px, 5vw, 64px) clamp(18px, 4vw, 48px);
+  }
+
+  h1 {
+    margin: 0 0 clamp(28px, 4vw, 48px);
+    font-size: clamp(24px, 2.4vw, 36px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffe7b3;
+    text-shadow: 0 2px 18px rgba(255, 196, 87, 0.25);
+  }
+
+  .grid {
+    width: 100%;
+    max-width: var(--max-width);
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--gap);
+  }
+
+  /* 电脑端 / 平板端：一排最多 6 个，列宽固定对齐 */
+  .game-btn {
+    display: block;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    line-height: 0;
+    background: #1a2336;
+    box-shadow:
+      0 0 0 3px #000,
+      0 10px 26px rgba(0, 0, 0, 0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .game-btn img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .game-btn:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 0 3px #000,
+      0 18px 36px rgba(0, 0, 0, 0.85),
+      0 0 0 6px rgba(255, 206, 112, 0.5);
+  }
+
+  .game-btn:hover img {
+    transform: scale(1.03);
+  }
+
+  .game-btn:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+
+  .game-btn:focus-visible {
+    outline: 3px solid #ffce70;
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .game-btn,
+    .game-btn img {
+      transition: none;
+    }
+  }
+
+  /* 手机端：一排 2 个 */
+  @media (max-width: 640px) {
+    :root {
+      --gap: 16px;
+      --card-radius: 16px;
+    }
+
+    body {
+      padding: 28px 16px 40px;
+    }
+
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>杨的游戏</h1>
+
+  <div class="grid">
+    <a class="game-btn" href="https://wyy0323.github.io/2048-game/" aria-label="2048">
+      <img src="assets/game-2048.jpg" alt="2048 游戏封面">
+    </a>
+    <a class="game-btn" href="https://wyy0323.github.io/super-chick/" aria-label="超级小鸡">
+      <img src="assets/super-chick.jpg" alt="超级小鸡游戏封面">
+    </a>
+    <a class="game-btn" href="https://wyy0323.github.io/face-snake/" aria-label="贪吃蛇">
+      <img src="assets/face-snake.jpg" alt="贪吃蛇游戏封面">
+    </a>
+  </div>
+</body>
+</html>
